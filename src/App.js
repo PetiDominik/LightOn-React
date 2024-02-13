@@ -1,28 +1,16 @@
 import './App.css';
 import PlayGround from './components/PlayGround';
 import React, { useState } from 'react';
-import Tiles from './model/Tiles';
+import LampProvider from './contex/LampContext';
 
-const TILES = new Tiles();
 
 function App() {
-    
-    let [tilesState, setFieldState] = useState(TILES.getTiles());
-
-    function changeTilesState(id) {
-        TILES.flipState(id);
-        
-        setFieldState(TILES.getTiles());
-
-        if (TILES.checkStateCount() >= 9) {
-            alert("Siker!");
-        }
-    }
-
 
     return (
         <div className="App">
-            <PlayGround tiles={tilesState} clickFunction={changeTilesState} />
+            <LampProvider>
+                <PlayGround />
+            </LampProvider>
 
             <footer>Péti Dominik</footer>
         </div>

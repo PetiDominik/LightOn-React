@@ -1,14 +1,18 @@
 import Tile from "./Tile";
 import './PlayGround.css';
+import { useContext } from "react";
+import { LampContext } from "../contex/LampContext";
 
 function PlayGround(props) {
-    
+
+    const { tilesState } = useContext(LampContext);
+
     return (
         <div className="playGround">
             {
-                props.tiles.map((element, index) => {
+                tilesState.map((element, index) => {
                     return (
-                        <Tile key={index} id={index} state={element} clickFunction={props.clickFunction} />
+                        <Tile key={index} id={index} state={element} />
                     )
                 })
             }
